@@ -42,7 +42,7 @@ for $network (sort keys %networks) {
 	print "</ul>\n";
     print "</div>";
 }
-print '</div>'
+print '</div>';
 
 print '<div class="row"><div class="col-xs-12">';
 print "<h2>Le graph du VPN <small>(mis à jour toutes les 2 minutes)</small></h2><img class='img-responsive' src=\"img/networks.jpg\"/>";
