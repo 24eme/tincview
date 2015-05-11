@@ -1,7 +1,7 @@
 <VirtualHost *:80>
-	DocumentRoot /home/actualys/tinc/webviz/html
+	DocumentRoot /home/user/tincviz/webviz/html
 	ServerName	10.20.20.1
-	<Directory /home/actualys/tinc/webviz/html>
+	<Directory /home/user/tincviz/webviz/html>
 	        Options Indexes FollowSymLinks
 	        AllowOverride All
 	        Require all granted
