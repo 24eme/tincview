@@ -31,7 +31,7 @@ for $network (sort keys %networks) {
 	for $host (sort { $networks{$network}{$a}{'IPcmp'}  cmp $networks{$network}{$b}{'IPcmp'} } keys %{$networks{$network}}) {
 		print "<li class='list-group-item'><span class='glyphicon glyphicon-hdd'></span>&nbsp;&nbsp;$host (".$networks{$network}{$host}{'IP'}.") <ul class='list-unstyled'>";
 		foreach $service (sort keys %{$networks{$network}{$host}{'Services'}}) {
-			print "<li><span class='glyphicon glyphicon-cog'></span>&nbps;&nbsp;<a href=\"$service\" target=\"_blank\">".$networks{$network}{$host}{'Services'}{$service}."</a></li>";
+			print "<li>&nbsp;&nbsp;<span class='glyphicon glyphicon-cog'></span>&nbsp;<a href=\"$service\" target=\"_blank\">".$networks{$network}{$host}{'Services'}{$service}."</a></li>";
 		}
 		print "</ul></li>";
 	}
