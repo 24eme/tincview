@@ -10,7 +10,7 @@ Here is an example of a Tinc View page with 3 networks :
 
 ##Configuration
 
-It exploits the tinc hosts configuration file, tinc native DumpGraph option (by default the graph file should be *network.graph*).
+It exploits the tinc host configuration files and the native *DumpGraph* option (by default the graph file should be *network.graph*).
 
 To add services and VPN Ip address of the host use extra configuration directives *NodeIP* and *HostedServices* in the *hosts* files. Here is a host example :
 
