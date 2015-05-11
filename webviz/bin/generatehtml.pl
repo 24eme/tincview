@@ -30,10 +30,10 @@ for (@ARGV) {
 print '<div class="row">';
 for $network (sort keys %networks) {
     print '<div class="col-md-4 col-sm-6 col-xs-12">';
-    print "<h2>$network</h2>\n";
+    print "<h2><span class='glyphicon glyphicon-tasks'></span>&nbsp;$network</h2>\n";
 	print "<ul class='list-group'>";
 	for $host (sort { $networks{$network}{$a}{'IPcmp'}  cmp $networks{$network}{$b}{'IPcmp'} } keys %{$networks{$network}}) {
-		print "<li class='list-group-item'>$host (".$networks{$network}{$host}{'IP'}.") <ul>";
+		print "<li class='list-group-item'><span class='glyphicon glyphicon-hdd'></span>&nbsp;$host (".$networks{$network}{$host}{'IP'}.") <ul>";
 		foreach $service (sort keys %{$networks{$network}{$host}{'Services'}}) {
 			print "<li><a href=\"$service\">".$networks{$network}{$host}{'Services'}{$service}."</a></li>";
 		}
