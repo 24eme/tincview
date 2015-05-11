@@ -1,4 +1,4 @@
 globalgraph/*.graph
 globalgraph/networks.jpg
-webviz/html/*
+webviz/html/index.html
 webviz/conf/tinc.conf
