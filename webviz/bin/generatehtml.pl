@@ -4,7 +4,7 @@ my %networks;
 
 open HEADER, "conf/global_header.html" ; print <HEADER>; close HEADER;
 
-print "<h1>Vizu Tinc <small>(mise à jour toutes les minutes)</small></h1>";
+print "<h1>Tinc View<small>(mise à jour toutes les minutes)</small></h1>";
 
 for (@ARGV) {
 	if (/\/etc\/tinc\/([^\/]*)\/hosts\/(.*)/) {
