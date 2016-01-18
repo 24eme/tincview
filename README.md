@@ -10,17 +10,21 @@ Here is an example of a Tinc View page with 3 networks :
 
 ##Installation
 
-Prérequis et dépendances
+Prerequies and dependance :
 
     sudo aptitude install graphviz
 
-Récupération du projet :
+Get project :
 
     git clone https://github.com/24eme/tincview.git
     
-Génération du html et graphique :
+Html and Graph generation :
 
     make
+    
+Install crontab to update html :
+
+    * * * * * cd path/to/tincview ; make > /dev/null
 
 ##Configuration
 
