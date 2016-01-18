@@ -22,9 +22,7 @@ Html and Graph generation :
 
     make
     
-You can configure Apache vhost
-
-    https://github.com/24eme/tincview/blob/master/webviz/conf/tinc.conf.example
+You can configure Apache vhost : https://github.com/24eme/tincview/blob/master/webviz/conf/tinc.conf.example
     
 Install crontab to update html :
 
