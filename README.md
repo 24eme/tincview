@@ -18,7 +18,7 @@ Get project :
 
     git clone https://github.com/24eme/tincview.git
     
-Html and Graph generation :
+HTML and Graph generation :
 
     make
     
