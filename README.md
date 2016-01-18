@@ -8,6 +8,20 @@ Here is an example of a Tinc View page with 3 networks :
 
 ![Example of Tinc View page](doc/example.jpg)
 
+##Installation
+
+Prérequis et dépendances
+
+    sudo aptitude install graphviz
+
+Récupération du projet :
+
+    git clone https://github.com/24eme/tincview.git
+    
+Génération du html et graphique :
+
+    make
+
 ##Configuration
 
 It exploits the tinc host configuration files and the native *DumpGraph* option (by default the graph file should be *network.graph*).
