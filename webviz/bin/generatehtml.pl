@@ -4,7 +4,7 @@ my %networks;
 
 open HEADER, "conf/global_header.html" ; print <HEADER>; close HEADER;
 
-print "<h1>Tinc View<small>(mise à jour toutes les minutes)</small></h1>";
+print "<h1>Tinc View <small style=\"font-size: 14px;\">(mise à jour toutes les minutes)</small></h1>";
 
 for (@ARGV) {
 	if (/\/etc\/tinc\/([^\/]*)\/hosts\/(.*)/) {
@@ -23,6 +23,17 @@ for (@ARGV) {
 		close $FILE;
 	}
 }
+
+print "<select style=\"display:none;\" id=\"services\" autofocus=\"autofocus\">";
+for $network (sort keys %networks) {
+    for $host (sort { $networks{$network}{$a}{'IPcmp'}  cmp $networks{$network}{$b}{'IPcmp'} } keys %{$networks{$network}}) {
+        foreach $service (sort keys %{$networks{$network}{$host}{'Services'}}) {
+        	print "<option value=\"".$service."\">". $network . " - " . $host . " - " . $networks{$network}{$host}{'Services'}{$service}{'libelle'}." (".$service.")</option>";
+		}
+	}
+}
+print "</select>";
+print "<div style=\"margin-top: 20px;\" class=\"row\"><div class=\"col-xs-12\"><input value=\"\" type=\"text\" class=\"form-control input-lg\" autofocus=\"autofocus\" placeholder=\"Rechercher un service...\" id=\"search\" /></div></div>";
 
 print '<div class="row">';
 for $network (sort keys %networks) {
