@@ -4,7 +4,7 @@ my %networks;
 
 open HEADER, "conf/global_header.html" ; print <HEADER>; close HEADER;
 
-print "<h1>Vizu Tinc <small>(mise à jour toutes les minutes)</small></h1>";
+print "<h1>Tinc View<small>(mise à jour toutes les minutes)</small></h1>";
 
 for (@ARGV) {
 	if (/\/etc\/tinc\/([^\/]*)\/hosts\/(.*)/) {
@@ -15,8 +15,9 @@ for (@ARGV) {
 			if ($l =~ /NodeIP=(.*)/) {
 				$networks{$n}{$h}{'IP'} = $1;
 				$networks{$n}{$h}{'IPcmp'} = sprintf("%03d%03d%03d%03d", split(/\./, $1));
-			}elsif($l =~ /HostedService=\[(.*)\|(.*)\]/) {
-				$networks{$n}{$h}{'Services'}{$1} = $2;
+			}elsif($l =~ /HostedService=\[([^\|]*)\|([^\|]*)\|?([^\|]*)\]/) {
+				$networks{$n}{$h}{'Services'}{$1}{'libelle'} = $2;
+            	$networks{$n}{$h}{'Services'}{$1}{'image'} = $3;
 			}
 		}
 		close $FILE;
@@ -29,9 +30,13 @@ for $network (sort keys %networks) {
     print "<h2><span class='glyphicon glyphicon-tasks'></span>&nbsp;&nbsp;$network</h2>\n";
 	print "<ul class='list-group'>";
 	for $host (sort { $networks{$network}{$a}{'IPcmp'}  cmp $networks{$network}{$b}{'IPcmp'} } keys %{$networks{$network}}) {
-		print "<li class='list-group-item'><span class='glyphicon glyphicon-hdd'></span>&nbsp;&nbsp;$host (".$networks{$network}{$host}{'IP'}.") <ul>";
+		print "<li class='list-group-item'><span class='glyphicon glyphicon-hdd'></span>&nbsp;&nbsp;$host (".$networks{$network}{$host}{'IP'}.") <ul class='list-unstyled'>";
 		foreach $service (sort keys %{$networks{$network}{$host}{'Services'}}) {
-			print "<li><a href=\"$service\" target=\"_blank\">".$networks{$network}{$host}{'Services'}{$service}."</a></li>";
+			print "<li>&nbsp;&nbsp;&nbsp;&nbsp;<span class='glyphicon glyphicon-cog'></span>&nbsp;<a href=\"$service\" target=\"_blank\">".$networks{$network}{$host}{'Services'}{$service}{'libelle'}."</a>";
+			if ($networks{$network}{$host}{'Services'}{$service}{'image'}) {
+				print "&nbsp;<img src=\"".$networks{$network}{$host}{'Services'}{$service}{'image'}."\" />";
+			}
+			print "</li>";
 		}
 		print "</ul></li>";
 	}
