@@ -1,1 +1,47 @@
-</div></body></html>
+</div>
+
+<script type="text/javascript" src="js/jquery-3.3.1.slim.min.js"></script>
+<script type="text/javascript" src="js/typeahead.bundle.min.js"></script>
+<script type="text/javascript">
+var servicesLibelle = [];
+var servicesUrl = {};
+$('#services option').each(function() {
+        servicesLibelle.push($(this).html());
+        servicesUrl[$(this).html()] = $(this).val();
+});
+
+var services = new Bloodhound({
+  datumTokenizer: Bloodhound.tokenizers.whitespace,
+  queryTokenizer: Bloodhound.tokenizers.whitespace,
+  local: servicesLibelle
+});
+
+$('#search').typeahead({
+  hint: true,
+  highlight: true,
+  minLength: 1
+},
+{
+  name: 'services',
+  source: services
+});
+
+$('#search').bind('typeahead:select', function(ev, suggestion) {
+	$('#search').typeahead('val', "");
+	$('#search').val("");
+	document.location.href=servicesUrl[suggestion]
+});
+
+$('#search').keypress(function (e) {
+
+	if (e.which == 13 && servicesUrl[$(this).val()]) {
+		var url = servicesUrl[$(this).val()];
+		$(this).typeahead('val', "");
+		$(this).val("");
+		document.location.href=url;
+  	}
+});
+
+</script>
+
+</body></html>

@@ -1,14 +1,34 @@
-#Tinc View
+# Tinc View
 
 Basic tools to generate an HTML visualisation of Tinc Networks.
 
-##Example
+## Example
 
 Here is an example of a Tinc View page with 3 networks :
 
 ![Example of Tinc View page](doc/example.jpg)
 
-##Configuration
+## Installation
+
+Prerequies and dependance :
+
+    sudo aptitude install graphviz
+
+Get project :
+
+    git clone https://github.com/24eme/tincview.git
+    
+HTML and Graph generation :
+
+    make
+    
+You can configure an apache vhost : https://github.com/24eme/tincview/blob/master/webviz/conf/tinc.conf.example
+    
+Install crontab to update html :
+
+    * * * * * cd path/to/tincview ; make > /dev/null
+
+## Configuration
 
 It exploits the tinc host configuration files and the native *DumpGraph* option (by default the graph file should be *network.graph*).
 
