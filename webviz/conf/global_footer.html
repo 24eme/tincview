@@ -35,16 +35,6 @@ $('#search').bind('typeahead:select', function(ev, suggestion) {
 	document.location.href=servicesUrl[suggestion]
 });
 
-$('#search').keypress(function (e) {
-
-	if (e.which == 13 && servicesUrl[$(this).val()]) {
-		var url = servicesUrl[$(this).val()];
-		$(this).typeahead('val', "");
-		$(this).val("");
-		document.location.href=url;
-  	}
-});
-
 </script>
 
 </body></html>
