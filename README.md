@@ -1,14 +1,14 @@
-#Tinc View
+# Tinc View
 
 Basic tools to generate an HTML visualisation of Tinc Networks.
 
-##Example
+## Example
 
 Here is an example of a Tinc View page with 3 networks :
 
 ![Example of Tinc View page](doc/example.jpg)
 
-##Installation
+## Installation
 
 Prerequies and dependance :
 
@@ -28,7 +28,7 @@ Install crontab to update html :
 
     * * * * * cd path/to/tincview ; make > /dev/null
 
-##Configuration
+## Configuration
 
 It exploits the tinc host configuration files and the native *DumpGraph* option (by default the graph file should be *network.graph*).
 
