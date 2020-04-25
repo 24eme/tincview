@@ -24,7 +24,7 @@ for (@ARGV) {
 	}
 }
 
-print "<select style=\"display:none;\" id=\"services\" autofocus=\"autofocus\">";
+print "<select style=\"display:none;\" id=\"services\">";
 for $network (sort keys %networks) {
     for $host (sort { $networks{$network}{$a}{'IPcmp'}  cmp $networks{$network}{$b}{'IPcmp'} } keys %{$networks{$network}}) {
         foreach $service (sort keys %{$networks{$network}{$host}{'Services'}}) {
@@ -33,7 +33,7 @@ for $network (sort keys %networks) {
 	}
 }
 print "</select>";
-print "<div style=\"margin-top: 20px;\" class=\"row\"><div class=\"col-xs-12\"><input value=\"\" type=\"text\" class=\"form-control input-lg\" autofocus=\"autofocus\" placeholder=\"Rechercher un service...\" id=\"search\" /></div></div>";
+print "<div style=\"margin-top: 20px;\" class=\"row\"><div class=\"col-xs-12\"><input value=\"\" type=\"text\" class=\"form-control input-lg\" autocomplete=\"off\" placeholder=\"Rechercher un service...\" id=\"search\" /></div></div>";
 
 print '<div class="row">';
 for $network (sort keys %networks) {

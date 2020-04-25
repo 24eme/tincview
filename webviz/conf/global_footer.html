@@ -19,12 +19,15 @@ var services = new Bloodhound({
 $('#search').typeahead({
   hint: true,
   highlight: true,
-  minLength: 1
+  minLength: 1,
+  autoselect: true
 },
 {
   name: 'services',
   source: services
 });
+
+$('#search').focus();
 
 $('#search').bind('typeahead:select', function(ev, suggestion) {
 	$('#search').typeahead('val', "");
