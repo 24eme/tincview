@@ -41,9 +41,9 @@ for $network (sort keys %networks) {
     print "<h2><span class='glyphicon glyphicon-tasks'></span>&nbsp;&nbsp;$network</h2>\n";
 	print "<ul class='list-group'>";
 	for $host (sort { $networks{$network}{$a}{'IPcmp'}  cmp $networks{$network}{$b}{'IPcmp'} } keys %{$networks{$network}}) {
-		print "<li class='list-group-item'><span class='glyphicon glyphicon-hdd'></span>&nbsp;&nbsp;$host (".$networks{$network}{$host}{'IP'}.") <ul class='list-unstyled'>";
+		print "<li id='host_$host' class='list-group-item'><span class='glyphicon glyphicon-hdd'></span>&nbsp;&nbsp;$host (".$networks{$network}{$host}{'IP'}.") <ul class='list-unstyled'>";
 		foreach $service (sort keys %{$networks{$network}{$host}{'Services'}}) {
-			print "<li>&nbsp;&nbsp;&nbsp;&nbsp;<span class='glyphicon glyphicon-cog'></span>&nbsp;<a href=\"$service\" target=\"_blank\">".$networks{$network}{$host}{'Services'}{$service}{'libelle'}."</a>";
+			print "<li>&nbsp;&nbsp;&nbsp;&nbsp;<span class='glyphicon glyphicon-cog'></span>&nbsp;<a href=\"$service\">".$networks{$network}{$host}{'Services'}{$service}{'libelle'}."</a>";
 			if ($networks{$network}{$host}{'Services'}{$service}{'image'}) {
 				print "&nbsp;<img src=\"".$networks{$network}{$host}{'Services'}{$service}{'image'}."\" />";
 			}
